@@ -23,7 +23,7 @@ public class BaseBallGame {
 
         while (isProgress()) {
             String inputNumbers = this.ioHandler.getInputNumber();
-            Score score = this.calculateScore(inputNumbers);
+            Score score = Score.getScoreFrom(targetNumbers, inputNumbers);
             applicationStatus = checkResultBy(score);
         }
 
@@ -44,20 +44,6 @@ public class BaseBallGame {
         }
 
         return APPLICATION_IN_PROGRESS;
-    }
-
-    private Score calculateScore(String inputNumbers) {
-        Score score = Score.of();
-
-        for (int idx = 0; idx < inputNumbers.length(); idx++) {
-            char inputNumber = inputNumbers.charAt(idx);
-            boolean isBall = this.targetNumbers.contains(String.valueOf(inputNumber));
-            boolean isStrike = this.targetNumbers.charAt(idx) == inputNumber;
-
-            score.calculateScore(isStrike, isBall);
-        }
-
-        return score;
     }
 
     private boolean isProgress() {

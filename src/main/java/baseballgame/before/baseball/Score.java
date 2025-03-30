@@ -13,6 +13,20 @@ public class Score {
         return new Score(0, 0);
     }
 
+    public static Score getScoreFrom(String targetNumbers, String inputNumbers) {
+        Score score = Score.of();
+
+        for (int idx = 0; idx < inputNumbers.length(); idx++) {
+            char inputNumber = inputNumbers.charAt(idx);
+            boolean isBall = targetNumbers.contains(String.valueOf(inputNumber));
+            boolean isStrike = targetNumbers.charAt(idx) == inputNumber;
+
+            score.calculateScore(isStrike, isBall);
+        }
+
+        return score;
+    }
+
     public void calculateScore(boolean isStrike, boolean isBall) {
         if (isStrike) {
             this.increaseStrike();
@@ -22,11 +36,11 @@ public class Score {
         }
     }
 
-    public void increaseStrike() {
+    private void increaseStrike() {
         strikeCount++;
     }
 
-    public void increaseBall() {
+    private void increaseBall() {
         ballCount++;
     }
 
@@ -39,15 +53,15 @@ public class Score {
         return this.strikeCount == 3;
     }
 
+    public boolean isNotStrikeout() {
+        return !this.isStrikeout();
+    }
+
     public int getStrikeCount() {
         return strikeCount;
     }
 
     public int getBallCount() {
         return ballCount;
-    }
-
-    public boolean isNotStrikeout() {
-        return !this.isStrikeout();
     }
 }
