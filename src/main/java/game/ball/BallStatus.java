@@ -1,4 +1,4 @@
-package game.status;
+package game.ball;
 
 public enum BallStatus {
     STRIKE, BALL, MISS

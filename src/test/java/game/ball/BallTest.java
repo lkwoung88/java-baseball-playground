@@ -1,14 +1,11 @@
-package ball;
+package game.ball;
 
-import game.Ball;
 import game.Umpire;
-import game.status.BallStatus;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static game.status.BallStatus.*;
-import static game.status.BallStatus.MISS;
+import static game.ball.BallStatus.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -19,7 +16,7 @@ class BallTest {
 
     @BeforeAll
     static void setup() {
-        umpire = new Umpire();
+        umpire = new Umpire(null);
     }
 
     @DisplayName("같은 수, 같은 자리수이면 '스트라이크' 처리한다.")
