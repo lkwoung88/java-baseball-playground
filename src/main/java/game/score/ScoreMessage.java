@@ -1,4 +1,6 @@
-package game;
+package game.score;
+
+import game.status.GameStatus;
 
 public class ScoreMessage {
     private GameStatus status;

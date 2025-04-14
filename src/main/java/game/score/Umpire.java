@@ -1,4 +1,4 @@
-package game;
+package game.score;
 
 import game.ball.Ball;
 import game.ball.BallStatus;
@@ -6,8 +6,8 @@ import game.ball.Balls;
 
 import java.util.List;
 
-import static game.GameStatus.IN_PROCESS;
-import static game.GameStatus.WIN;
+import static game.status.GameStatus.IN_PROCESS;
+import static game.status.GameStatus.WIN;
 import static game.ball.BallStatus.*;
 
 public class Umpire {
@@ -51,6 +51,7 @@ public class Umpire {
     public Score judge(Ball guessBall) {
         List<Ball> targetBallList = this.targetBalls.getTargetBalls();
 
+        // TODO 성능 개선점
         int strikeCount = (int)targetBallList.stream()
                 .filter(targetBall -> this.judge(targetBall, guessBall) == STRIKE)
                 .count();

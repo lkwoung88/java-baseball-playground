@@ -1,4 +1,4 @@
-package game;
+package game.score;
 
 public class Score {
     private int ballCount;

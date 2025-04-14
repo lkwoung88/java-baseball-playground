@@ -1,8 +1,8 @@
 package game.ball;
 
-import game.GameStatus;
-import game.ScoreMessage;
-import game.Umpire;
+import game.status.GameStatus;
+import game.score.ScoreMessage;
+import game.score.Umpire;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
