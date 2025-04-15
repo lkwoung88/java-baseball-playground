@@ -6,9 +6,8 @@ import game.ball.Balls;
 
 import java.util.List;
 
-import static game.status.GameStatus.IN_PROCESS;
-import static game.status.GameStatus.WIN;
 import static game.ball.BallStatus.*;
+import static game.status.GameStatus.*;
 
 public class Umpire {
 
@@ -37,15 +36,22 @@ public class Umpire {
 
         StringBuilder message = new StringBuilder();
         if (hasCount(strikeCount)) {
-            String comment = String.format("%d 스트라이크", strikeCount);
+            String comment = String.format("%d 스트라이크 ", strikeCount);
             message.append(comment);
         }
         if (hasCount(ballCount)) {
             String comment = String.format("%d 볼", ballCount);
             message.append(comment);
         }
+        if (hasNotAnything(strikeCount, ballCount)) {
+            message.append("낫싱");
+        }
 
-        return ScoreMessage.of(IN_PROCESS, message.toString());
+        return ScoreMessage.of(IN_GAME, message.toString());
+    }
+
+    private boolean hasNotAnything(int strikeCount, int ballCount) {
+        return strikeCount == 0 && ballCount == 0;
     }
 
     public Score judge(Ball guessBall) {

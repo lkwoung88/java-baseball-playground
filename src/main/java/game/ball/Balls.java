@@ -15,6 +15,19 @@ public class Balls {
         return new Balls(balls);
     }
 
+    public static Balls of(String ballsString) {
+        String[] balls = ballsString.split("");
+        List<Ball> ballsList = new ArrayList();
+
+        for (int position = 0; position < balls.length; position++) {
+            int ballNumber = Integer.parseInt(balls[position]);
+            Ball ball = Ball.of(ballNumber, position);
+            ballsList.add(ball);
+        }
+
+        return new Balls(ballsList);
+    }
+
     public List<Ball> getTargetBalls() {
         return targetBalls;
     }
