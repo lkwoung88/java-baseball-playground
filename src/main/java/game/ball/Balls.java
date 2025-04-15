@@ -31,8 +31,4 @@ public class Balls {
     public List<Ball> getTargetBalls() {
         return targetBalls;
     }
-
-    public void add(Ball ball) {
-        this.targetBalls.add(ball);
-    }
 }
