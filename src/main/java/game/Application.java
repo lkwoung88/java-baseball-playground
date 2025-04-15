@@ -10,6 +10,11 @@ public class Application {
     private static IoHandler ioHandler = new IoHandler();
 
     public static void main(String[] args) {
+        Application application = new Application();
+        application.runApplication();
+    }
+
+    private void runApplication() {
         ApplicationStatus status;
 
         do {
@@ -20,7 +25,7 @@ public class Application {
         } while (ApplicationStatus.isInProgress(status));
     }
 
-    private static ApplicationStatus askPlayContinue() {
+    private ApplicationStatus askPlayContinue() {
         String retryInput = ioHandler.retryComments();
 
         if ("2".equals(retryInput)) {

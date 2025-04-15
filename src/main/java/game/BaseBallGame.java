@@ -19,18 +19,16 @@ public class BaseBallGame {
         this.ioHandler = ioHandler;
     }
 
-    public ApplicationStatus run() {
+    public void run() {
         Umpire umpire = new Umpire(targetBalls);
-        GameStatus status = IN_GAME;
+        GameStatus gameStatus = IN_GAME;
 
-        while (GameStatus.isInGame(status)) {
+        while (GameStatus.isInGame(gameStatus)) {
             String inputNumbers = this.ioHandler.getInputNumber();
             Balls guessBalls = Balls.of(inputNumbers);
             ScoreMessage scoreMessage = umpire.makeScoreOutBy(guessBalls);
-            status = checkResultBy(scoreMessage);
+            gameStatus = checkResultBy(scoreMessage);
         }
-
-        return ApplicationStatus.TERMINATED;
     }
 
     private GameStatus checkResultBy(ScoreMessage scoreMessage) {
